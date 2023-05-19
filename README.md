@@ -17,7 +17,7 @@ npx prisma studio => ferramenta para ver o banco de dados.
 ## frontend setup
 
 npx create-next-app@latest nome_app --use-npm => cria a aplicação nextjs.
-npm i prettier-plugin-tailwindcss => usar o prettier no arquivo prettier.config ===> deixa as classes do tailwind semantica, conforme adicionamos na className.
+npm i prettier-plugin-tailwindcss -D => usar o prettier no arquivo prettier.config ===> deixa as classes do tailwind semantica, conforme adicionamos na className.
 
 ## mobile
 
