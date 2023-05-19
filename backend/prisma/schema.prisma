@@ -16,6 +16,24 @@ datasource db {
 // User nome da tabela no singular, ela vai pro plural
 
 model User {
-  id   String @id @default(uuid()) // criar a coluna id, como chave primária, recebendo string e ter o default um uuid.
-  nome String
+  id        String @id @default(uuid()) // criar a coluna id, como chave primária, recebendo string e ter o default um uuid.
+  githubId  Int    @unique
+  nome      String
+  login     String
+  avatarUrl String
+
+  // relacionamento
+  memories Memory[]
+}
+
+model Memory {
+  id        String   @id @default(uuid())
+  coverURL  String
+  content   String
+  isPublic  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  // relationamento
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
 }

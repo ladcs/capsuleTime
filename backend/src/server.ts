@@ -1,16 +1,16 @@
 import fastify from 'fastify'
-import { PrismaClient } from '@prisma/client'
+import cors from '@fastify/cors'
+import { memoriesRoute } from './route/memories'
 
 const app = fastify()
-const prisma = new PrismaClient() // criando uma instancia do banco.
+
+app.register(cors, {
+  origin: true,
+})
+
+app.register(memoriesRoute)
 
 app.get('/hello', () => 'hello world!') // criando endpoint /hello.
-
-app.get('/', async () => {
-  const users = await prisma.user.findMany() // para acessar a tabela user
-
-  return users
-})
 
 app
   .listen({
