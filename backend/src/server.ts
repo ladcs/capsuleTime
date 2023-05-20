@@ -2,13 +2,20 @@ import fastify from 'fastify'
 import cors from '@fastify/cors'
 import 'dotenv/config'
 import { memoriesRoute } from './route/memories'
+import jwt from '@fastify/jwt'
+import { authRoutes } from './route/auth'
 
 const app = fastify()
+
+app.register(jwt, {
+  secret: 'um segredo qualquer',
+})
 
 app.register(cors, {
   origin: true,
 })
 
+app.register(authRoutes)
 app.register(memoriesRoute)
 
 app.get('/hello', () => 'hello world!') // criando endpoint /hello.
