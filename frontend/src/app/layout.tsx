@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import './globals.css'
 import { Roboto_Flex as Roboto, Bai_Jamjuree as Bai } from 'next/font/google'
+import { LeftPage } from '@/component/LeftPage'
 
 const roboto = Roboto({ subsets: ['latin'], variable: '--font-roboto' })
 const bai = Bai({ subsets: ['latin'], weight: '700', variable: '--font-bai' })
@@ -19,7 +20,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={`${roboto.variable} ${bai.variable} bg-gray-700 font-sans text-gray-100`}
       >
-        {children}
+        <main className="grid min-h-screen grid-cols-2">
+          <LeftPage />
+          {children}
+        </main>
       </body>
     </html>
   )
